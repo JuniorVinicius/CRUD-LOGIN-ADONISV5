@@ -24,7 +24,7 @@ Route.get('/', async () => {
   return { message: 'Hello World!' }
 })
 
-Route.post('/login', 'AuthsController.login')
+Route.post('/login', 'AuthController.login')
 Route.post('/reset', 'ResetsController.store')
 Route.post('/reset/:token', 'ResetsController.update')
 
@@ -34,5 +34,5 @@ Route.group(() => {
     Route.get('/list-all', 'UsersController.index')
     Route.put('/update/:id', 'UsersController.update')
     Route.delete('/delete/:id', 'UsersController.delete')
-  })
+  }).middleware('auth')
 })
